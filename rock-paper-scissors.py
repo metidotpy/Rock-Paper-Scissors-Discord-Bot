@@ -5,7 +5,7 @@ from discord.ext import commands
 from discord.ext.commands import CommandNotFound
 import random
 
-GAMES=["rock","paper","scissors","rock","paper","scissors","paper","paper","paper","rock","scissors","rock","paper","rock","scissors","scissors","rock","rock","rock","scissors","paper"]
+GAMES=["rock","paper","scissors"]
 
 
 client=commands.Bot(command_prefix=">>", help_command=None)
@@ -25,8 +25,13 @@ async def _help(ctx):
         value="**`play [your move]`**, **`p [your move]`**, **`game [your move]`**",
         inline=False
     )
-    embed.set_author(name=ctx.author.name,icon_url=ctx.author)
+    embed.set_author(name=ctx.author.name,icon_url=ctx.author.avatar_url)
     embed.set_footer(text=f"Requested By {ctx.author}",icon_url=ctx.author.avatar_url)
+    await ctx.send(embed=embed)
+
+
+
+
 
 @client.command(name="play",aliases=["p","game"],pass_context=True)
 async def _play(ctx,move):
@@ -38,13 +43,12 @@ async def _play(ctx,move):
 
     if move.lower() not in ["rock","paper","scissors"]:
         await ctx.send("You Should Use [**`rock`**,**`paper`**,**`scissors`**]")
-    
-    if move.lower() == "rock":
+    elif move.lower() == "rock":
         if computer == "scissors":
             res=(f"{ctx.author.mention} Wins!")
         elif computer == "paper":
             res=("<@851920383723831356> Wins!")
-    elif move.lower == "paper":
+    elif move.lower() == "paper":
         if computer == "rock":
             res=(f"{ctx.author.mention} Wins!")
         elif computer == "scissors":
