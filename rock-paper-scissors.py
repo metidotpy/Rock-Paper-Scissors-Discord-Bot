@@ -87,4 +87,4 @@ async def _play_error(ctx, error):
         print("We Have An Error, Bad Argument")
         await ctx.send("Bad Arguments")
 
-client.run("ODUxOTIwMzgzNzIzODMxMzU2.YL_Srw.pXcWBWE26d1yC8JSIOl1ODYvM9E")
+client.run("your token")
